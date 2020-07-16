@@ -1,0 +1,55 @@
+var today = '';
+	switch (curday) {
+		case 0:
+			today = 'Sunday';
+
+			break;
+		case 1:
+			today = 'Monday';
+
+			break;
+		case 2:
+			today = 'Tuesday';
+
+			break;
+		case 3:
+			today = 'Wednesday';
+
+			break;
+		case 4:
+			today = 'Thursday';
+
+			break;
+		case 5:
+			today = 'Friday';
+
+			break;
+		case 6:
+			today = 'Saturday';
+
+			break;
+
+		default:
+			break;
+
+
+
+            <%if (KindOfDay === "Sunday" || KindOfDay == "Saturday"){ %>
+		<h1 style="color: blue;">It is <%= KindOfDay %> Todolist</h1>
+		<% } else{ %>
+		<h1 style="color: red;">It is <%= KindOfDay %> Todolist</h1>
+		<%}%>
+
+        // {
+// 	var d = new Date();
+// 	var weekday = new Array(7);
+// 	weekday[0] = 'Sunday';
+// 	weekday[1] = 'Monday';
+// 	weekday[2] = 'Tuesday';
+// 	weekday[3] = 'Wednesday';
+// 	weekday[4] = 'Thursday';
+// 	weekday[5] = 'Friday';
+// 	weekday[6] = 'Saturday';
+
+// 	var today = weekday[d.getDay()];
+// 	res.render('list', { KindOfDay: today });
