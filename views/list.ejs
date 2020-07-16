@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Todo list</title>
-		<link rel="stylesheet" href="css/styles.css" />
-	</head>
-	<body>
+<%- include('header'); -%>
 		<div class="box" id="heading">
-			<h1><%= kindOfDay %></h1>
+			<h1><%= title %></h1>
 		</div>
+
 		<div class="box">
 			<% for (var i =0; i < newItem.length; i ++){%>
 
@@ -17,9 +10,14 @@
 			<% };%>
 
 			<form class="item" action="/" method="post">
-				<input type="text" placeholder="New item" name="todo" autocomplete="off" autocompleterequired />
-				<button type="submit">+</button>
+				<input
+					type="text"
+					placeholder="New item"
+					name="todo"
+					autocomplete="off"
+					required
+				/>
+				<button name="list" value=<%=title %> type="submit">+</button>
 			</form>
 		</div>
-	</body>
-</html>
+		<%- include('footer'); -%>
