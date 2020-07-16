@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const app = express();
-var items = ["Eat", "bath", "shower"];
+var items = ['Eat', 'bath', 'shower'];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
