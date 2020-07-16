@@ -2,27 +2,25 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const request = require('request');
+const date = require(__dirname + '/date.js');
 
+/********SubItems */
 const app = express();
-
-var homeItems = ['Eat', 'bath', 'shower'];
-var workList = [];
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+
+
+//***********List */
+var homeItems = ['Eat', 'bath', 'shower'];
+var workList = [];
+
+
+
 /***********Code */
 app.get('/', (req, res) => {
-	var curDay = new Date();
-	var option = {
-		weekday: 'long',
-		day: 'numeric',
-		month: 'short',
-	};
-
-	today = curDay.toLocaleDateString('en-US', option);
+	let today = date.getDate();
 
 	res.render('list', { title: today, newItem: homeItems });
 });
