@@ -8,7 +8,6 @@ const _ = require('lodash');
 
 /********SubItems */
 const app = express();
-var items = ['Eat', 'bath', 'shower'];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
