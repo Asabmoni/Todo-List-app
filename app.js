@@ -13,10 +13,16 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 //Database
-mongoose.connect('mongodb://localhost:27017/todoListDB', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+mongoose.connect(
+	'mongodb+srv://admin-user:test123@cluster0.zotz7.mongodb.net/todoListDB?retryWrites=true&w=majority',
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	}
+);
+
+mongoose.set('useFindAndModify', false);
+
 //*******Item collection */
 const itemSchema = new mongoose.Schema({
 	name: {
@@ -48,14 +54,6 @@ const listSchema = new mongoose.Schema({
 
 const List = new mongoose.model('List', listSchema);
 
-// Item.insertMany(defaultItems, (err) => {
-// 	if (err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log('Inserted successfully');
-// 	}
-// });
-
 /***********Code */
 app.get('/', (req, res) => {
 	//let today = date.getDate();
@@ -63,9 +61,7 @@ app.get('/', (req, res) => {
 	Item.find({}, (err, foundItems) => {
 		if (foundItems.length === 0) {
 			Item.insertMany(defaultItems, (err) => {
-				if (err) {
-					console.log(err);
-				} else {
+				if (!err) {
 					console.log('Successfully added the default items');
 				}
 			});
@@ -126,11 +122,10 @@ app.get('/about', (req, res) => {
 app.post('/delete', (req, res) => {
 	const delItem = req.body.Checkbox;
 	const listName = req.body.listName;
+
 	if (listName === 'Today') {
 		Item.findByIdAndRemove(delItem, (err) => {
-			if (err) {
-				console.log(err);
-			} else {
+			if (!err) {
 				console.log('Removed successfully');
 			}
 			res.redirect('/');
@@ -149,6 +144,6 @@ app.post('/delete', (req, res) => {
 });
 
 //*****************Footer */
-app.listen(process.env.PORT || 301, () => {
-	console.log('Server working on port 301');
+app.listen(process.env.PORT || 306, () => {
+	console.log('Server working on port 306');
 });
