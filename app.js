@@ -11,7 +11,7 @@ const _ = require('lodash');
 /********SubItems */
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static ('public'));
+app.use(express.static ('Public'));
 app.set('view engine', 'ejs');
 
 //Database
