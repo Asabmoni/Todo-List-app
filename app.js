@@ -5,13 +5,13 @@ const bodyParser = require('body-parser');
 //const date = require(__dirname + '/date.js');
 const mongoose = require('mongoose');
 const _ = require('lodash');
-const path = require('path');
+
 
 
 /********SubItems */
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static ('public'));
 app.set('view engine', 'ejs');
 
 //Database
